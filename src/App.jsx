@@ -130,6 +130,17 @@ export default function App() {
         <p style={{ fontSize: '0.8125rem', color: 'var(--slate-400)' }}>
           Scannova — AI Market Research Agent • Powered by Gemini & OpenAI
         </p>
+        <p style={{ fontSize: '0.8125rem', color: 'var(--slate-400)', marginTop: 'var(--space-2)' }}>
+          Powered by{' '}
+          <a
+            href="https://www.tertiaryinfotech.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: 'var(--slate-500)', textDecoration: 'underline' }}
+          >
+            Tertiary Infotech Academy Pte Ltd
+          </a>
+        </p>
       </footer>
     </>
   );
