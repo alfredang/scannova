@@ -1,4 +1,4 @@
-export default function Header({ serviceStatus }) {
+export default function Header({ serviceStatus, theme, onToggleTheme }) {
   return (
     <header
       style={{
@@ -48,6 +48,30 @@ export default function Header({ serviceStatus }) {
               <StatusDot label="OpenAI" status={serviceStatus.openai} />
             </>
           )}
+          <button
+            type="button"
+            onClick={onToggleTheme}
+            aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+            title={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: 34,
+              height: 34,
+              borderRadius: 'var(--radius-full)',
+              background: 'rgba(255,255,255,0.06)',
+              border: '1px solid rgba(255,255,255,0.12)',
+              color: 'white',
+              cursor: 'pointer',
+              fontSize: '0.95rem',
+              transition: 'background 0.15s ease, transform 0.15s ease',
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255,255,255,0.12)')}
+            onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(255,255,255,0.06)')}
+          >
+            {theme === 'dark' ? '☀️' : '🌙'}
+          </button>
         </div>
       </div>
     </header>

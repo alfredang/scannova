@@ -72,6 +72,33 @@
   /* Typography */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Semantic surface (theme-aware) */
+  --surface: #ffffff;
+  color-scheme: light;
+}
+
+/* ========== Dark theme ========== */
+[data-theme='dark'] {
+  /* Invert slate scale so existing var(--slate-*) refs flip automatically */
+  --slate-50: #0b1220;
+  --slate-100: #111827;
+  --slate-200: #1f2937;
+  --slate-300: #334155;
+  --slate-400: #64748b;
+  --slate-500: #94a3b8;
+  --slate-600: #cbd5e1;
+  --slate-700: #e2e8f0;
+  --slate-800: #f1f5f9;
+  --slate-900: #f8fafc;
+
+  /* Soften status tints on dark backgrounds */
+  --green-50: rgba(34, 197, 94, 0.12);
+  --red-50: rgba(239, 68, 68, 0.12);
+  --orange-50: rgba(249, 115, 22, 0.12);
+
+  --surface: #111827;
+  color-scheme: dark;
 }
 
 html {
@@ -85,6 +112,7 @@ body {
   color: var(--slate-900);
   min-height: 100vh;
   line-height: 1.6;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 #root {
@@ -102,7 +130,7 @@ body {
 
 /* ========== Card ========== */
 .card {
-  background: white;
+  background: var(--surface);
   border: 1px solid var(--slate-200);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-sm);
@@ -152,7 +180,7 @@ body {
 }
 
 .btn-secondary {
-  background: white;
+  background: var(--surface);
   color: var(--slate-700);
   border: 1px solid var(--slate-200);
 }
@@ -174,7 +202,7 @@ body {
   font-family: var(--font-sans);
   font-size: 0.9375rem;
   color: var(--slate-900);
-  background: white;
+  background: var(--surface);
   border: 1.5px solid var(--slate-200);
   border-radius: var(--radius-lg);
   transition: all 0.2s ease;

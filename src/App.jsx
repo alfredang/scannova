@@ -11,6 +11,17 @@ export default function App() {
   const [results, setResults] = useState(null);
   const [error, setError] = useState(null);
   const [serviceStatus, setServiceStatus] = useState(null);
+  const [theme, setTheme] = useState(() => {
+    if (typeof window === 'undefined') return 'dark';
+    return localStorage.getItem('scannova-theme') || 'dark';
+  });
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    localStorage.setItem('scannova-theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => setTheme((t) => (t === 'dark' ? 'light' : 'dark'));
 
   // Check service health on mount
   useEffect(() => {
@@ -53,7 +64,7 @@ export default function App() {
 
   return (
     <>
-      <Header serviceStatus={serviceStatus} />
+      <Header serviceStatus={serviceStatus} theme={theme} onToggleTheme={toggleTheme} />
 
       <main
         className="container"
@@ -124,7 +135,7 @@ export default function App() {
           borderTop: '1px solid var(--slate-200)',
           padding: 'var(--space-6)',
           textAlign: 'center',
-          background: 'white',
+          background: 'var(--surface)',
         }}
       >
         <p style={{ fontSize: '0.8125rem', color: 'var(--slate-400)' }}>
